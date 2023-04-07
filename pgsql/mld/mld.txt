@@ -1,0 +1,45 @@
+xmoney MLD
+
+----------------------------------
+Zone(
+    pk: code_zone: String,
+
+)
+user(
+    (pk) code_user: String,
+    (FK) #code_zone_residence : string,
+
+)
+
+Transaction(
+    (pk) code_trans : string,
+    (fk) #code_user_ges
+        status
+
+)
+Demande_Transfert(
+    (pk) code_demande
+    (fk) #code_proprietaire
+    (fk) #code_zone_depart
+    (fk) #code_zone_destination
+        status
+)
+
+Authorisation(
+    (fk) #code_approuveur
+    (fk) #code_demande
+    (fk) #code_transaction
+        status
+        mode_matching: [AUTO/MANUELLE]
+        Montant_de_base (formule : demande.montant)
+        Montant_convertis
+        frais_transfert 
+        Montant_final_net
+)
+
+enrichisement(
+    (fk) #code_agent
+    (fk) #code_demande
+    (fk) #code_transaction
+        status
+)
