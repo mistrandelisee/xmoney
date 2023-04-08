@@ -1,23 +1,10 @@
 {
   
   "development": {
-    "username": "mistrand",
-    "password": "urealite",
-    "database": "xmoney",
-    "host": "127.0.0.1",
     "dialect": "postgres",
-    "sslmode":"require",
-    "dialectOptions": {
-      "ssl": {
-        "require": true,
-        "rejectUnauthorized": false
-      },
-      "keepAlive": true 
-    },
-    "ssl": true,
-    "define": {
-        "timestamps": true
-    }
+    "protocol": "postgres",
+    "use_env_variable":"DB_LINK",
+    "ssl": { "rejectUnauthorized": false }
     
   },
    "production": {
