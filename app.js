@@ -1,3 +1,6 @@
+
+
+require('dotenv').config();
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -7,7 +10,9 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
+var synchronizer = require('./sync/synchronize');//for sync 
 var app = express();
+const {NODE_ENV,SYNC}=process.env;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,6 +32,9 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+if(SYNC=='true' ) synchronizer.syncAll();
+// synchronizer.syncAll();
+console.log(' ---------------------- ',NODE_ENV,SYNC)
 // error handler
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
