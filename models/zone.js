@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      zone.hasMany(models['utilisateur'], { as:'residents'});
+      zone.hasMany(models['utilisateur'], { as:'residents',foreignKey: 'id_zone_residence'});
       zone.hasMany(models['transfert'], { as:'provenance',foreignKey: 'id_zone_depart'});
       zone.hasMany(models['transfert'], { as:'destinations',foreignKey: 'id_zone_destination'});
     }

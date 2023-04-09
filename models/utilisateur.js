@@ -32,6 +32,7 @@ module.exports = (sequelize, DataTypes) => {
     email:  { 
       type: DataTypes.TEXT, 
       allowNull: false,
+      unique: true,
       validate: {  isEmail: true,  }
     },
     password: {
@@ -40,23 +41,24 @@ module.exports = (sequelize, DataTypes) => {
     },
     status:  { 
       type: DataTypes.STRING, 
-      allowNull: false,
+      allowNull: false, defaultValue: 'NEW',
       validate: {  
-        isIn: [['New','Active', 'Banned', 'Verified']]
+        isIn: [['NEW','ACTIVE', 'BANNED', 'VERIFIED']]
       }
     },
     role:  { 
       type: DataTypes.STRING, 
       allowNull: false,
       validate: {  
-        isIn: [['Admin','Client', 'Agent', 'Gestionnaire']]
+        isIn: [['ADMIN','CLIENT', 'AGENT', 'GESTIONNAIRE']]
       }
     },
     gender: { type: DataTypes.STRING, allowNull: false, defaultValue: 'X',
       validate: {  
-        isIn: [['Male','Female', 'X']]
+        isIn: [['MALE','FEMALE', 'X']]
       } 
     },
+    token: DataTypes.TEXT,
     is_deleted: { type: DataTypes.BOOLEAN, allowNull: false, defaultValue: false },
     nom_complet: {
       type: DataTypes.VIRTUAL,

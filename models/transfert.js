@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
       transfert.belongsTo(models['zone'], { as: 'zone_depart',foreignKey: 'id_zone_depart' });
       transfert.belongsTo(models['zone'], { as: 'zone_destination',foreignKey: 'id_zone_destination' });
       transfert.belongsToMany(models['transaction'], { through: 'authorisation' ,as: 'transactions',foreignKey: 'id_transfert',});
+      transfert.belongsToMany(models['utilisateur'], { through: 'authorisation' ,as: 'user_auth',foreignKey: 'id_transfert',});
       transfert.belongsToMany(models['transaction'], { through: 'enrichisement',as: 'transactions_agt',foreignKey: 'id_transfert', });
+      transfert.belongsToMany(models['utilisateur'], { through: 'enrichisement',as: 'user_agt',foreignKey: 'id_transfert', });
     }
   }
   transfert.init({

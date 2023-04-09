@@ -4,6 +4,7 @@
     "dialect": "postgres",
     "protocol": "postgres",
     "use_env_variable":"DB_LINK",
+    "logging": false,
     "ssl": { "rejectUnauthorized": false }
     
   },
