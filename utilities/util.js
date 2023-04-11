@@ -3,6 +3,9 @@ module.exports.encryptText = async(text) =>{
     const salt = await bcrypt.genSalt(10);
     return await bcrypt.hash(text, salt);
 }
+module.exports.compareWithEncryptedText = (plaintext,encryptedtext) =>{
+    return bcrypt.compareSync(plaintext, encryptedtext);
+}
 async function checkFirstLoading(req, res,next){
     if(!isLoading){
        next(); //If all confs have load already exists, proceed to page

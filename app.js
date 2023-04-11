@@ -8,11 +8,12 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var debug = require('debug')('xmoney:app');
 const {NODE_ENV,SYNC}=process.env;
-const {checkSession}=require('./utilities/authorize');
+const {checkSession,checkAutorized}=require('./utilities/authorize');
 
 //routes imports ---START
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/utilisateur');
+var authRouter = require('./routes/auth');
 //routes imports ---END
 
 //functions imports ---START
@@ -43,7 +44,8 @@ app.all("/*", function(req, res, next){
 
 
 app.use('/', indexRouter);
-app.use('/api/users',checkSession, usersRouter);
+app.use('/api/auth',checkSession, authRouter);
+app.use('/api/users',checkSession,checkAutorized, usersRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

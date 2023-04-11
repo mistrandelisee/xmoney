@@ -1,4 +1,4 @@
-const DEFAULT_SYS_ERR_CODE=404;
+const DEFAULT_SYS_ERR_CODE=501;
 class AppError extends Error {  
     constructor (message) {
         super(message)
