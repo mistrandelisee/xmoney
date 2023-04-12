@@ -9,11 +9,11 @@
     
   },
    "production": {
-    "database":"dc7bb28lmot7ci",
-    "host":"ec2-52-4-177-4.compute-1.amazonaws.com",
+    "database":"ebdb",
+    "host":"awseb-e-nkxbmnd8ev-stack-awsebrdsdatabase-o17viikgd6hb.cqceovb8fgp3.us-east-1.rds.amazonaws.com",
     "port":5432 ,
     "username":"rsbhvbftjgyiuo",
-    "password":"4f1d61debcada649493df21ed5383bcff74750424f80e4e7f8c27a28a8a8300f", 
+    "password":"aWKEaj4bfyS7V3k", 
     "sslmode":"require",
     "use_env_variable":"DATABASE_URL",
     "dialectOptions": {
